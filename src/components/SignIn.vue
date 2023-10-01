@@ -27,14 +27,19 @@
   
 <script>
 import { mapActions } from "vuex"
-
-
 import axios from 'axios';
+
+
 export default {
+  name: "SignIn",
+  components: {},
   data() {
     return {
-      usuario: { email: '', password: '' }
-    }
+      usuario: {
+        email: "",
+        password: "",
+      },
+    };
   },
   methods: {
     ...mapActions(['guardarUsuario']),
@@ -50,51 +55,12 @@ export default {
           console.log(e.response);
         });
     }
-
   },
   computed: {
     bloquear() {
-      return this.usuario.email.trim() === "" ? true : false;
+      return this.usuario.email.trim() === "" || this.usuario.password.trim() === "" ? true : false;
     },
   },
-
-  /*  name: "LogIn",
-   components: {},
-   data() {
-     return {
-       usuario: {
-         email: "",
-         password: "",
-       },
-     };
-   },
-   methods: {
-     login() {
-       console.log(this.usuario);
-       if (this.usuario.email.trim() === "") {
-         console.log("campo vacio");
-         return;
-       }
-       console.log("no est vacio");
-       // se envian los datos
-       this.usuario = {
-         email: "",
-         password: "",
-       };
-       axios.post("http://localhost:3001/signin", this.usuario)
-         .then((res) => {
-           console.log(res.data);
-         })
-         .catch((e) => {
-           console.log(e.response);
-         });
-     },
-   },
-   computed: {
-     bloquear() {
-       return this.usuario.email.trim() === "" ? true : false;
-     },
-   }, */
 };
 </script>
   
