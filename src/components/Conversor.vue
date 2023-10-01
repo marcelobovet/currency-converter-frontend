@@ -1,5 +1,5 @@
 <template>
-    <div class="text-white container">
+    <div class="text-white container mt-5 position-absolute top-50 start-50 translate-middle">
         <div class="box bg-dark mx-auto mt-5 p-5 rounded text-center">
             <h2>Conversor de monedoas Nacional</h2>
             <div class="my-3 px-5">

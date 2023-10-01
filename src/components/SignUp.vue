@@ -1,10 +1,10 @@
 <template>
   <div class="container w-50 position-absolute top-50 start-50 translate-middle">
-    <form @submit.prevent="procesarFormulario" class="colorRegis p-3 bordered-2 rounded-2 mt-5">
+    <form @submit.prevent="signup" class="colorRegis p-3 bordered-2 rounded-2 mt-5">
       <div class="row g-3">
         <div class="text-center">
           <label class="form-label">Nombre</label>
-          <input type="text" class="form-control" placeholder="Ingrese se nombre" v-model.trim="usuario.nombre" />
+          <input type="text" class="form-control" placeholder="Ingrese se nombre" v-model.trim="usuario.name" />
         </div>
       </div>
       <div class="mb-3 text-center">
@@ -13,16 +13,16 @@
       </div>
       <div class="mb-3 text-center">
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" placeholder="Ingrese un password" v-model="usuario.password" />
+        <input type="password" class="form-control" placeholder="Ingrese un password" v-model.trim="usuario.password" />
+        <div v-if="!usuario.password.length" class="text-danger"> Ingresa una contraseña</div>
+
       </div>
-      <!-- <div class="mb-3 text-center">
+      <div class="mb-3 text-center">
         <label class="form-label">Confirmar Password</label>
-        <input
-          type="password"
-          class="form-control"
-          placeholder="Repitra su password"
-        />
-      </div> -->
+        <input type="password" class="form-control" placeholder="Repitra su password" v-model="usuario.password_2" />
+        <div v-if="usuario.password !== usuario.password_2" class="text-danger"> Contraseñas no coinciden</div>
+
+      </div>
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success rounded-pill" :disabled="bloquear">
           registrar
@@ -38,40 +38,53 @@
   </div>
 </template>
 
-<script>
+<script >
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+
 export default {
   name: "SignUp",
   components: {},
+  setup() {
+    const router = useRouter()
+
+    const signinClick = () => {
+      router.push('/signin')
+    }
+    return {
+      signinClick
+    }
+  },
   data() {
     return {
       usuario: {
-        nombre: "",
+        name: "",
         email: "",
         password: "",
+        password_2: ""
       },
     };
   },
   methods: {
-    procesarFormulario() {
-      console.log(this.usuario);
-      if (this.usuario.nombre.trim() === "") {
-        console.log("campo vacio");
-        return;
-      }
-      console.log("no est vacio");
-      // se envian los datos
-
-      this.usuario = {
-        nombre: "",
-        email: "",
-        password: "",
-      };
+    signup() {
+      axios
+        .post("http://localhost:3001/signup", this.usuario)
+        .then((res) => {
+          console.log(res.data);
+          this.signinClick()
+        })
+        .catch((e) => {
+          console.log(e.response);
+        });
     },
+
   },
   computed: {
     bloquear() {
-      return this.usuario.nombre.trim() === "" ? true : false;
+      return this.usuario.name.trim() && this.usuario.email.trim() === "" ? true : false;
     },
+
   },
 };
+
 </script>

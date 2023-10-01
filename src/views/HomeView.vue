@@ -1,7 +1,7 @@
 <script setup>
-import Conversor from "../components/Conversor.vue";
+
 </script>
 
 <template>
-    <Conversor />
+    <h1>Aca va el home</h1>
 </template>
