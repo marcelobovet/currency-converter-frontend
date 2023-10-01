@@ -13,14 +13,14 @@ const routes = [
     component: () => import('../views/ProfileView.vue')
   },
   {
-    path: '/signin',
+    path: '/signup',
     name: 'registrar',
-    component: () => import('../views/SignInView.vue')
+    component: () => import('../views/SignUpView.vue')
   },
   {
-    path: '/login',
+    path: '/signin',
     name: 'iniciar sesion',
-    component: () => import('../views/SignUpView.vue')
+    component: () => import('../views/SignInView.vue')
   },
 ]
 

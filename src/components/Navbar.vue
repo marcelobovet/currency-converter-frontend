@@ -1,7 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
     <nav class="navbar bg-light fixed-top container-fluid">
         <div class="container-fluid">
@@ -31,10 +27,10 @@ import { RouterLink, RouterView } from 'vue-router'
                             <RouterLink to="/profile">Perfil</RouterLink>
                         </li>
                         <li class="nav-item mb-4 mx-start fs-5">
-                            <RouterLink to="/signin">Registrar</RouterLink>
+                            <RouterLink to="/signup">Registrar</RouterLink>
                         </li>
                         <li class="nav-item mb-4 mx-start fs-5">
-                            <RouterLink to="/login">Iniciar Sesion</RouterLink>
+                            <RouterLink to="/signin">Iniciar Sesion</RouterLink>
                         </li>
                     </ul>
                 </div>
@@ -43,6 +39,12 @@ import { RouterLink, RouterView } from 'vue-router'
     </nav>
     <RouterView />
 </template>
+
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+
+</script>
 
 <style>
 .logo:hover {
