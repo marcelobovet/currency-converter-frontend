@@ -63,10 +63,7 @@ export default {
     created() {
         this.leerToken();
     }
-
 }
-
-
 </script>
 
 <style>

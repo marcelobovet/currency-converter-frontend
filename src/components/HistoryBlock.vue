@@ -15,7 +15,7 @@
         <h4 class="text-white text-center fw-bolder text-decoration-underline">
             Historial de conversiones
         </h4>
-        <table class="table w-100 text-dark border-1 rounded-1 bg-light text-center">
+        <table class="mt-3 table w-100 text-dark border-1 rounded-1 bg-light text-center">
             <thead>
                 <tr>
                     <th class="fw-bolder text-decoration-underline" scope="col">#</th>
@@ -23,6 +23,10 @@
                         usuario
                     </th>
                     <th class="fw-bolder text-decoration-underline" scope="col">Fecha</th>
+                    <th class="fw-bolder text-decoration-underline" scope="col">Uf</th>
+                    <th class="fw-bolder text-decoration-underline" scope="col">Valor UF</th>
+                    <th class="fw-bolder text-decoration-underline" scope="col">Conversion</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +48,41 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <button @click="descarga" class="btn btn-success ms-5">
+            Descargar Historial de transacciones
+        </button>
+    </div>
 </template>
   
-<script setup></script>
+<script>
+import axios from 'axios';
+import fileDownload from "js-file-download";
+
+export default {
+    setup() {
+
+    },
+    methods: {
+        descarga() {
+            const token = localStorage.getItem('token');
+            const options = {
+                headers: {
+                    Authorization: "Bearer " + token
+                },
+                responseType: 'blob'
+            }
+            axios
+                .post("http://localhost:3001/excell", {}, options)
+                .then((res) => {
+                    const filename = res.headers.filename ? res.headers.filename : `transacciones.xlsx`;
+                    fileDownload(res.data, filename);
+                })
+                .catch((e) => {
+                    console.log(e.response);
+                });
+        }
+    },
+};
+</script>
   
