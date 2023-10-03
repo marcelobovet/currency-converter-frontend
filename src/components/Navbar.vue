@@ -33,14 +33,15 @@
                             <RouterLink to="/conversor" v-if="isActive">Conversor</RouterLink>
                         </li>
                         <li class="nav-item mb-4 text-center fs-4 fw-bolded">
-                            <RouterLink to="/profile" v-if="isActive">Perfil</RouterLink>
+                            <RouterLink to="/profile" v-if="isActive && isAdmin">Perfil</RouterLink>
                         </li>
                         <li class="nav-item mb-4 text-center fs-4 fw-bolded">
                             <a @click="cerrarSesion()" class="btn btn-danger" v-if="isActive"> Cerrar Sesion</a>
                         </li>
-                        <li class="nav-item mb-4 text-center fs-3 text-dark">
-                            <p> Bienvenido {Username}</p>
-                        </li>
+                        <div v-if="user"
+                            class="nav-item mb-4 text-center fs-3 text-dark position-absolute bottom-0 start-50 translate-middle-x">
+                            <p> Bienvenido {{ user.name }}</p>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -55,13 +56,26 @@ import { RouterLink, RouterView } from 'vue-router';
 import { mapActions, mapGetters } from 'vuex';
 export default {
     methods: {
-        ...mapActions(['cerrarSesion', 'leerToken'])
+        //////
+        /* fetchUserData() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                this.$store.dispatch('fetchUser', token);
+            } else {
+                console.error('Token no encontrado en el localStorage');
+            }
+        }, */
+        ///////
+        ...mapActions(['cerrarSesion'])
     },
     computed: {
-        ...mapGetters(['isActive'])
-    },
-    created() {
-        this.leerToken();
+        ////
+        /*user() {
+            return this.$store.state.user; // Accede al estado Vuex para obtener los datos del usuario.
+        },*/
+        ////
+
+        ...mapGetters(['isActive', 'user', 'isAdmin'])
     }
 }
 </script>

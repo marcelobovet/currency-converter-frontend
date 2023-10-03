@@ -25,7 +25,7 @@
   </div>
 </template>
   
-<script>
+<!-- <script>
 import { mapActions } from "vuex"
 import axios from 'axios';
 
@@ -42,14 +42,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['guardarUsuario']),
+    ...mapActions(['guardarToken']),
     signin() {
       axios
         .post("http://localhost:3001/signin", this.usuario)
         .then((res) => {
           console.log(res.data);
           const token = res.data.token
-          this.guardarUsuario(token)
+          this.guardarToken(token)
         })
         .catch((e) => {
           console.log(e.response);
@@ -62,5 +62,48 @@ export default {
     },
   },
 };
-</script>
+</script> -->
   
+<script>
+import { mapActions } from "vuex";
+import axios from 'axios';
+
+export default {
+  name: "SignIn",
+  components: {},
+  data() {
+    return {
+      usuario: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    ...mapActions(["getMe", "guardarToken"]), // Mapea la acción fetchUser de Vuex
+
+    async signin() {
+      try {
+        const res = await axios.post("http://localhost:3001/signin", this.usuario)
+        console.log(res.data);
+        const token = res.data.token;
+        this.guardarToken(token)
+
+        // Guarda el token en el localStorage
+        localStorage.setItem('token', token);
+
+        // Llama a la acción Vuex para obtener los datos del usuario
+        await this.getMe();
+
+      } catch (err) {
+        console.log(err.response);
+      }
+    },
+  },
+  computed: {
+    bloquear() {
+      return this.usuario.email.trim() === "" || this.usuario.password.trim() === "";
+    },
+  },
+};
+</script>

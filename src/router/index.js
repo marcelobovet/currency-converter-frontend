@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: '/signin',
-    name: 'iniciar sesion',
+    name: 'signin',
     component: () => import('../views/SignInView.vue')
   },
 ]
