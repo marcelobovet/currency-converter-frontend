@@ -84,7 +84,7 @@ export default {
 
     async signin() {
       try {
-        const res = await axios.post("http://localhost:3001/signin", this.usuario)
+        const res = await axios.post("/signin", this.usuario)
         console.log(res.data);
         const token = res.data.token;
         this.guardarToken(token)
