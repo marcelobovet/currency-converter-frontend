@@ -45,7 +45,7 @@ export default {
     };
   },
   created() {
-    axios.post('http://localhost:3001/today')
+    axios.post('/today')
       .then((res) => {
         this.resultado = res.data;
       })
