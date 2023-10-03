@@ -1,19 +1,15 @@
 # cc-v2
 
-## Project setup
+En la pagina principal del repositorio presionar boton verde <>code y en la pestaña local presionar "download zip", 
+posterior a la descarga descomprimir archivo zip y abrir con vsCode, abrir la terminal y ejecutar 
+los siguientes comandos:
+
+## Instalar node_modules
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Iniciar proyecto
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
