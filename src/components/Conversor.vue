@@ -19,20 +19,19 @@
                     <h4 v-if="resultado.convertion_date">Fecha de conversión: {{ this.resultado.convertion_date }}</h4>
                     <h4 v-if="resultado.clp_amount">Valor Moneda: ${{ this.resultado.clp_amount }}</h4>
                     <h4 v-if="resultado.convertion_amount">Valor Conversion: ${{ this.resultado.convertion_amount }}</h4>
-
                 </div>
             </form>
         </div>
     </div>
 </template>
   
+
 <script>
 import axios from 'axios';
 import moment from 'moment';
 
 export default {
     setup() {
-        // const fecha = moment().format('DD-MM-YYYY')
     },
     data() {
         return {
@@ -55,7 +54,6 @@ export default {
                     Authorization: "Bearer " + token
                 },
             }
-
             const data = {
                 uf: this.amount.uf,
                 fecha: moment(this.amount.fecha).format('DD-MM-YYYY')
@@ -76,6 +74,7 @@ export default {
     },
 }
 </script>
+
 
 <style>
 #start {

@@ -1,9 +1,9 @@
 <template>
-    <HistoryBlock />
+    <Profile />
 </template>
   
 <script setup>
-import HistoryBlock from "../components/HistoryBlock.vue";
+import Profile from "../components/Profile.vue";
 </script>
   
 <style></style>

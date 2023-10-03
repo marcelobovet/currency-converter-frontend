@@ -1,12 +1,15 @@
 <template>
-    <nav class="navbar bg-light fixed-top container-fluid">
+    <nav class="navbar bg-light fixed-top container-fluid bg-dark">
         <div class="container-fluid">
             <RouterLink to="/" class="display-5 text-decoration-none logo">
                 <img src="../assets/img/logo.png" width="100" height="100" alt="logo" to="/">
             </RouterLink>
-            <RouterLink to="/" class="display-5 text-decoration-none title">Currency Converter</RouterLink>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar">
+            <RouterLink to="/"
+                class="titulo display-5 text-decoration-none title position-absolute top-0 start-50 translate-middle-x">
+                Currency
+                Converter</RouterLink>
+            <button class="navbar-toggler bg-success" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -40,7 +43,7 @@
                         </li>
                         <div v-if="user"
                             class="nav-item mb-4 text-center fs-3 text-dark position-absolute bottom-0 start-50 translate-middle-x">
-                            <p> Bienvenido {{ user.name }}</p>
+                            <p class="text-success fs-1"> Bienvenido {{ user.name }}</p>
                         </div>
                     </ul>
                 </div>
@@ -56,29 +59,14 @@ import { RouterLink, RouterView } from 'vue-router';
 import { mapActions, mapGetters } from 'vuex';
 export default {
     methods: {
-        //////
-        /* fetchUserData() {
-            const token = localStorage.getItem('token');
-            if (token) {
-                this.$store.dispatch('fetchUser', token);
-            } else {
-                console.error('Token no encontrado en el localStorage');
-            }
-        }, */
-        ///////
         ...mapActions(['cerrarSesion'])
     },
     computed: {
-        ////
-        /*user() {
-            return this.$store.state.user; // Accede al estado Vuex para obtener los datos del usuario.
-        },*/
-        ////
-
         ...mapGetters(['isActive', 'user', 'isAdmin'])
     }
 }
 </script>
+
 
 <style>
 .logo:hover {
@@ -91,6 +79,10 @@ export default {
     text-decoration: none;
     background-color: transparent;
     color: green
+}
+
+.titulo {
+    margin-top: 30px;
 }
 </style>
 

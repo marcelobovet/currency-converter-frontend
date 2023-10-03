@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
 import router from '@/router';
 import axios from 'axios';
+import createPersistedState from "vuex-persistedstate"
 
 export default createStore({
+  plugins: [createPersistedState()],
   state: {
     token: '',
     user: null
@@ -24,7 +26,6 @@ export default createStore({
       commit('SET_TOKEN', '');
       commit('SET_USER', null);
       localStorage.removeItem('token');
-
       router.push('/signin')
     },
     async getMe({ commit }) {
@@ -50,7 +51,6 @@ export default createStore({
     user: state => state.user,
     isAdmin: state => state.user.role.name === 'admin' ? true : false
   },
-
   modules: {
 
   }
