@@ -12,6 +12,8 @@ import { setupCalendar } from 'v-calendar';
 Vue.use(VueAxios, axios)
 
 // Agregamos la URL base de nuestra API
-axios.defaults.baseURL = 'http://localhost:3001';
+/* axios.defaults.baseURL = 'http://localhost:3001'; */
+// back en render
+axios.defaults.baseURL = 'https://currencyconverter-qupq.onrender.com'
 
 createApp(App).use(store).use(router).use(plugin, defaultConfig).use(setupCalendar, {}).mount('#app')
