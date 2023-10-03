@@ -1,19 +1,11 @@
 # cc-v2
 
-## Project setup
+## Instalar node_modules
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Iniciar prooyecto
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
