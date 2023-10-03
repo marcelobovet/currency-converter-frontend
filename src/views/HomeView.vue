@@ -21,7 +21,6 @@
           </div>
         </div>
         <div class="bg-dark text-white rounded-pill mt-5 info">
-          <!-- <h1 class="">Para acceder al conversor <br>Inicia sesion aqui </h1> -->
           <RouterLink to="/signin">Para acceder al conversor Inicia sesion
             aquí</RouterLink>
         </div>
