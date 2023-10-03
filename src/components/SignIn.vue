@@ -18,51 +18,14 @@
       <div className="text-center mt-3">
         <p>
           ¿Aun no tienes una cuenta?
-          <a href="/signup" className="link-underline-primary">Registrate</a>.
+          <RouterLink to="/signup">registrate
+            aquí</RouterLink>
         </p>
       </div>
     </form>
   </div>
 </template>
   
-<!-- <script>
-import { mapActions } from "vuex"
-import axios from 'axios';
-
-
-export default {
-  name: "SignIn",
-  components: {},
-  data() {
-    return {
-      usuario: {
-        email: "",
-        password: "",
-      },
-    };
-  },
-  methods: {
-    ...mapActions(['guardarToken']),
-    signin() {
-      axios
-        .post(`${process.env.VUE_APP_API_URL}/signin`, this.usuario)
-        .then((res) => {
-          console.log(res.data);
-          const token = res.data.token
-          this.guardarToken(token)
-        })
-        .catch((e) => {
-          console.log(e.response);
-        });
-    }
-  },
-  computed: {
-    bloquear() {
-      return this.usuario.email.trim() === "" || this.usuario.password.trim() === "" ? true : false;
-    },
-  },
-};
-</script> -->
   
 <script>
 import { mapActions } from "vuex";
