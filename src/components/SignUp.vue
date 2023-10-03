@@ -31,7 +31,7 @@
       <div class="text-center mt-3">
         <p>
           Si ya tienes una cuenta inicia sesion
-          <RouterLink to="/signin">Para acceder al conversor Inicia sesion
+          <RouterLink to="/signin"> Inicia sesion
             aquí</RouterLink>
         </p>
       </div>

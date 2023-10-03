@@ -21,8 +21,10 @@
           </div>
         </div>
         <div class="bg-dark text-white rounded-pill mt-5 info">
-          <RouterLink to="/signin">Para acceder al conversor Inicia sesion
-            aquí</RouterLink>
+          <p>Para acceder al conversor Inicia sesion<RouterLink to="/signin">
+              aquí</RouterLink>
+          </p>
+
         </div>
 
       </div>
