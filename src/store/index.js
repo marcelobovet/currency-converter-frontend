@@ -32,7 +32,7 @@ export default createStore({
       try {
         const token = localStorage.getItem('token');
         if (token) {
-          const response = await axios.post('http://localhost:3001/me', {}, {
+          const response = await axios.post(`${process.env.VUE_APP_API_URL}/me`, {}, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json',

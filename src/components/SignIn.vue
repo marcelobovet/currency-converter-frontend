@@ -45,7 +45,7 @@ export default {
     ...mapActions(['guardarToken']),
     signin() {
       axios
-        .post("http://localhost:3001/signin", this.usuario)
+        .post(`${process.env.VUE_APP_API_URL}/signin`, this.usuario)
         .then((res) => {
           console.log(res.data);
           const token = res.data.token
@@ -84,7 +84,7 @@ export default {
 
     async signin() {
       try {
-        const res = await axios.post("http://localhost:3001/signin", this.usuario)
+        const res = await axios.post(`${process.env.VUE_APP_API_URL}/signin`, this.usuario)
         console.log(res.data);
         const token = res.data.token;
         this.guardarToken(token)

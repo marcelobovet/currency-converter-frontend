@@ -34,7 +34,7 @@ export default {
                 responseType: 'blob'
             }
             axios
-                .post("http://localhost:3001/excell", {}, options)
+                .post(`${process.env.VUE_APP_API_URL}/excell`, {}, options)
                 .then((res) => {
                     const filename = res.headers.filename ? res.headers.filename : `transacciones.xlsx`;
                     fileDownload(res.data, filename);

@@ -61,7 +61,7 @@ export default {
             console.log(data);
 
             axios
-                .post("http://localhost:3001/converter", data, options)
+                .post(`${process.env.VUE_APP_API_URL}/converter`, data, options)
                 .then((res) => {
                     console.log(res.data);
 

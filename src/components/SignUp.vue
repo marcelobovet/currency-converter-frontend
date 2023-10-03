@@ -68,7 +68,7 @@ export default {
   methods: {
     signup() {
       axios
-        .post("http://localhost:3001/signup", this.usuario)
+        .post(`${process.env.VUE_APP_API_URL}/signup`, this.usuario)
         .then((res) => {
           console.log(res.data);
           this.signinClick()

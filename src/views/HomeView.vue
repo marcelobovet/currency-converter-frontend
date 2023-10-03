@@ -45,7 +45,7 @@ export default {
     };
   },
   created() {
-    axios.post('http://localhost:7265/today')
+    axios.post(`${process.env.VUE_APP_API_URL}/today`)
       .then((res) => {
         this.resultado = res.data;
       })
