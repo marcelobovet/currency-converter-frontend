@@ -9,7 +9,7 @@ los siguientes comandos:
 npm install
 ```
 
-### Iniciar prooyecto
+### Iniciar proyecto
 ```
 npm run serve
 ```
