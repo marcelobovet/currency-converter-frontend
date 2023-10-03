@@ -45,7 +45,7 @@ export default {
     };
   },
   created() {
-    axios.post('/today')
+    axios.post('https://currencyconverter-qupq.onrender.com/today')
       .then((res) => {
         this.resultado = res.data;
       })
